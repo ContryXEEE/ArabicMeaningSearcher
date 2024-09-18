@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بَاحِثُ المَعَانِي العَـرَبِيُّ</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://i.imgur.com/cPmLABx.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            transition: background-image 0.3s ease;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -50px;
+        }
+        .title {
+            font-family: 'Amiri', serif;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .title img {
+            width: 100%;
+            max-width: 600px;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 20px;
+            font-size: 22px;
+            width: 500px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        input[type="text"]::placeholder {
+            color: #D0D0D0;
+        }
+        input[type="button"] {
+            padding: 20px 30px;
+            font-size: 22px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        .bottom-left-image {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        .bottom-left-image img {
+            width: 150px;
+            height: auto;
+        }
+        .bottom-left-text {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 5px;
+            z-index: 20;
+        }
+        .icon {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            margin-left: 2px; /* Reduced margin */
+        }
+        .contryxe-text, .social-text {
+            font-family: 'Pathway Gothic One', sans-serif;
+        }
+        .mode-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .mode-switcher img {
+            width: 30px;
+            height: 30px;
+        }
+        /* New square button in the top left corner */
+        .info-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .info-button:hover {
+            background-color: #f0f0f0;
+        }
+        /* Dark mode styles */
+        .dark-mode body {
+            background-image: url('https://i.imgur.com/Lxxw6qt.png');
+        }
+        .dark-mode .title img {
+            content: url('https://i.imgur.com/xHQ6L0R.png');
+        }
+        .dark-mode .bottom-left-image img {
+            content: url('https://i.imgur.com/Cgj696D.png');
+        }
+        .dark-mode input[type="text"] {
+            background-color: #142759;
+            color: white;
+            border: 1px solid #06163C;
+        }
+        .dark-mode input[type="text"]::placeholder {
+            color: #29407A;
+        }
+        .dark-mode input[type="button"] {
+            background-color: #0056b3;
+        }
+        .dark-mode .mode-switcher {
+            background-color: #0A142D;
+            border: 1px solid #273B6D;
+        }
+        .dark-mode .mode-switcher img {
+            content: url('https://i.imgur.com/fdN2ms0.png');
+        }
+        /* Dark mode styles for the info button */
+        .dark-mode .info-button {
+            background-color: #0A142D;
+            border: 1px solid #273B6D;
+        }
+        .dark-mode .info-button:hover {
+            background-color: #1A253B;
+        }
+
+        /* Responsive styles for mobile */
+        @media (max-width: 600px) {
+            .title {
+                font-size: 30px;
+            }
+            input[type="text"] {
+                padding: 10px;
+                font-size: 16px;
+                width: 80%;
+                margin: 5px 0;
+            }
+            input[type="button"] {
+                padding: 10px 15px;
+                font-size: 16px;
+            }
+            .search-container {
+                width: 100%;
+                text-align: center;
+            }
+            /* Adjust bottom-left-image for mobile */
+            .bottom-left-image {
+                bottom: 50px; /* Move it up */
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="info-button" onclick="showInfo()">
+        <img id="infoButtonImage" src="https://i.imgur.com/fyPtwRw.png" alt="Info" style="width: 25px; height: 25px;"> 
+    </button>
+
+    <div class="mode-switcher" onclick="toggleMode()">
+        <img src="https://i.imgur.com/RmuQn7o.png" alt="Toggle Mode">
+    </div>
+
+    <div class="container">
+        <div class="title">
+            <img src="https://i.imgur.com/d3OA8YW.png" alt="باحث المعاني العربية">
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="البحث في الباحث العربي">
+            <input type="button" value="البحث" onclick="performSearch()">
+        </div>
+        <div class="search-container">
+            <input type="text" id="googleSearchInput" placeholder="Google البحث في">
+            <input type="button" value="البحث" onclick="performGoogleSearch()">
+        </div>
+    </div>
+
+    <div class="bottom-left-image">
+        <img src="https://i.imgur.com/ij0CHtr.png" alt="Bottom Left Image">
+    </div>
+
+    <div class="bottom-left-text">
+        <span class="social-text">
+            <a href="https://www.instagram.com/contryxe?igsh=dGt3bzBudWY1NTQz" target="_blank" style="color: white; text-decoration: none;">@contryxe</a>
+            <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-circle-512.png" alt="Instagram Icon" class="icon">
+            | 
+            <span class="contryxe-text">contryxe</span>
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-round-color-icon.png" alt="Discord Icon" class="icon">
+            | 
+            <a href="https://youtube.com/@contryxe" target="_blank" style="color: white; text-decoration: none;" class="social-text">Contry XE</a>
+            <img src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-youtube-circle-512.png" alt="YouTube Icon" class="icon">
+            | 
+            <a href="https://www.facebook.com/contry.xe?mibextid=ZbWKwL" target="_blank" style="color: white; text-decoration: none;" class="social-text">Contry XE</a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" alt="Facebook Icon" class="icon">
+            | 
+            <span class="social-text">@wadaqalaa</span>
+            <img src="https://static.vecteezy.com/system/resources/previews/020/964/381/non_2x/telegram-circle-icon-for-web-design-free-png.png" alt="Telegram Icon" class="icon">
+        </span>
+    </div>
+
+    <script>
+        function performSearch() {
+            var inputField = document.getElementById('searchInput');
+            var query = inputField.value.trim();
+            
+            if (query) {
+                var encodedQuery = encodeURIComponent(query);
+                var searchUrl = "https://www.baheth.info/find/web/" + encodedQuery + "?sources=%D9%84%D8%B3%D9%8A%D8%A7%D9%86%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8";
+                window.open(searchUrl, '_blank');
+                inputField.value = '';
+            } else {
+                alert("رجاءً أدخل كلمةً للبحث عن معناها.");
+            }
+        }
+
+        function performGoogleSearch() {
+            var inputField = document.getElementById('googleSearchInput');
+            var query = inputField.value.trim();
+            
+            if (query) {
+                var encodedQuery = encodeURIComponent("معنى كلمة " + query);
+                var searchUrl = "https://www.google.com/search?q=" + encodedQuery;
+                window.open(searchUrl, '_blank');
+                inputField.value = '';
+            } else {
+                alert("رجاءً أدخل كلمةً للبحث عن معناها.");
+            }
+        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                performSearch();
+            }
+        });
+
+        document.getElementById('googleSearchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                performGoogleSearch();
+            }
+        });
+
+        function showInfo() {
+            alert("تم إنشاء هذا البرنامج للبحث السريع عن معاني الكلمات العربية بشكل أبسط وأسرع. تمت برمجته بمساعدة ChatGPT");
+        }
+
+        function toggleMode() {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            const infoButtonImage = document.getElementById('infoButtonImage');
+            if (isDarkMode) {
+                document.body.style.backgroundImage = "url('https://i.imgur.com/Lxxw6qt.png')";
+                infoButtonImage.src = "https://i.imgur.com/CHaagsb.png"; // Dark mode image
+            } else {
+                document.body.style.backgroundImage = "url('https://i.imgur.com/cPmLABx.png')";
+                infoButtonImage.src = "https://i.imgur.com/fyPtwRw.png"; // Light mode image
+            }
+        }
+    </script>
+</body>
+</html>
