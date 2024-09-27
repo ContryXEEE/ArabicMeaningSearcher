@@ -215,7 +215,7 @@
             <img src="https://i.imgur.com/d3OA8YW.png" alt="باحث المعاني العربية">
         </div>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="البحث في الباحث العربي">
+            <input type="text" id="searchInput" placeholder="البحث في المعاني">
             <input type="button" value="البحث" onclick="performSearch()">
         </div>
         <div class="search-container">
@@ -254,7 +254,7 @@
             
             if (query) {
                 var encodedQuery = encodeURIComponent(query);
-                var searchUrl = "https://www.baheth.info/find/web/" + encodedQuery + "?sources=%D9%84%D8%B3%D9%8A%D8%A7%D9%86%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8";
+                var searchUrl = "https://www.almaany.com/ar/dict/ar-ar/" + encodedQuery + "/";
                 window.open(searchUrl, '_blank');
                 inputField.value = '';
             } else {
@@ -291,7 +291,7 @@
         });
 
         function showInfo() {
-            alert("تم إنشاء هذا البرنامج للبحث السريع عن معاني الكلمات العربية بشكل أبسط وأسرع. تمت برمجته بمساعدة ChatGPT");
+            alert("نشأ هذا البرنامج للمساعدة على بحث معاني الكلمات العربية بسرعة, كعند قراءة كتاب أو قصيدة. طُوِّر من قبل ChatGPT");
         }
 
         function toggleMode() {
